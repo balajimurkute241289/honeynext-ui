@@ -1,0 +1,70 @@
+<div class="banner">
+  <div class="banner-content text-center">
+    <h1 class="hero-title">Pure Bliss in Every Drop</h1>
+    <p class="hero-text">Experience the natural sweetness of HoneyNext’s premium honey, crafted with care.</p>
+    <a routerLink="/products" class="btn btn-primary">Shop Now</a>
+  </div>
+</div>
+
+<section class="container my-5">
+  <h2 class="section-title text-center">Featured Products</h2>
+  <div class="row">
+    <div class="col-md-3 col-sm-6 mb-4" *ngFor="let product of featuredProducts">
+      <div class="product-card">
+        <div class="product-image">
+          <img [src]="product.image" [alt]="product.name" class="img-fluid" (error)="handleImageError($event)">
+        </div>
+        <h5>{{ product.name }}</h5>
+        <p class="price">₹{{ product.price.toFixed(2) }}</p>
+        <button class="btn btn-primary w-100" [disabled]="product.status !== 'In Stock'" (click)="addToCart(product)">
+          {{ product.status === 'In Stock' ? 'Add to Cart' : 'Sold Out' }}
+        </button>
+        <span class="status-badge" [ngClass]="{'sold-out': product.status === 'Sold Out', 'in-stock': product.status === 'In Stock'}">
+          {{ product.status }}
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="brand-story py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-4">
+        <img src="https://images.pexels.com/photos/2332765/pexels-photo-2332765.jpeg" 
+             alt="Our Story" 
+             class="img-fluid rounded" 
+             (error)="handleImageError($event)">
+      </div>
+      <div class="col-md-6">
+        <h2 class="section-title">Our Story</h2>
+        <p>At HoneyNext, we believe in the purity of nature. Our honey is sourced from the pristine Himalayan valleys, crafted with love to bring you the finest quality. Join us in celebrating the sweet essence of life.</p>
+        <a routerLink="/about" class="btn btn-primary">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials py-5">
+  <div class="container">
+    <h2 class="section-title text-center">What Our Customers Say</h2>
+  <div class="row">
+    <div class="col-md-4 mb-4">
+      <div class="testimonial-card">
+        <p>"The best honey I’ve ever tasted! Pure and natural, it’s a staple in my kitchen."</p>
+        <h5>- Priya S.</h5>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="testimonial-card">
+        <p>"HoneyNext’s quality is unmatched. The packaging is beautiful, and delivery is fast!"</p>
+        <h5>- Rohan K.</h5>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="testimonial-card">
+        <p>"I love the rich flavor of their Himalayan honey. Highly recommend!"</p>
+        <h5>- Anjali M.</h5>
+      </div>
+    </div>
+  </div> 
